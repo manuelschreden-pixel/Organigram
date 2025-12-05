@@ -1,0 +1,3 @@
+INSERT INTO `users`(`name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES ('admin','admin@example.com','[value-3]','$2y$10$NeoSJYMjtpjcxeWevyviMe1rNlejS0.PT49jIDl6CHsHfnrNwrOZ2','[value-5]','[value-6]','[value-7]');
+
+INSERT INTO `adressen`( `Straße`, `Hausnummer`, `PLZ`, `Ort`) VALUES ('Oberrainz','19','9423','St.Georgen');

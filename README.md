@@ -1,1 +1,1 @@
-# Organigram
+# 2025WS-Bachelor-Projekt

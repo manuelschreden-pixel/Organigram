@@ -1,0 +1,56 @@
+CREATE TABLE Adressen(
+    AdressID INT AUTO_INCREMENT PRIMARY KEY,
+    Straße VARCHAR(100),
+    Hausnummer VARCHAR(10),
+    PLZ VARCHAR(10),
+    Ort VARCHAR(100)
+);
+
+CREATE TABLE Bestellstatus(
+    StatusID INT AUTO_INCREMENT PRIMARY KEY,
+    StatusTyp VARCHAR(255)
+);
+
+CREATE TABLE Kunden(
+    KundenID INT AUTO_INCREMENT PRIMARY KEY,
+    Nachname VARCHAR(100), 
+    Vorname VARCHAR(100),
+    AdresseID INT,
+    Telefonnummer VARCHAR(20),
+    EMail VARCHAR(50),
+    FOREIGN KEY(AdresseID) REFERENCES Adressen(AdressID)
+);
+
+CREATE TABLE Kategorien (
+	KategorieID INT AUTO_INCREMENT PRIMARY KEY,
+    Kategorie VARCHAR(100) NOT NULL);
+    
+CREATE TABLE Produkte(
+    ProduktID INT AUTO_INCREMENT PRIMARY KEY,
+    Produktname VARCHAR(100),
+    Einzelpreis DECIMAL(6,2),
+    KategorieID INT,
+    FOREIGN KEY(KategorieID) REFERENCES Kategorien(KategorieID)
+);
+    
+CREATE TABLE Bestellungen(
+    BestellID INT AUTO_INCREMENT PRIMARY KEY,
+    KundenID INT,
+    Bestelldatum DATE,
+    Abholdatum DATE,
+    Abholort VARCHAR(100),
+    Preis Decimal(6,2),
+    Notiz VARCHAR(255),
+    StatusID INT,
+    FOREIGN KEY(KundenID) REFERENCES Kunden(KundenID),
+    FOREIGN KEY(StatusID) REFERENCES Bestellstatus(StatusID)
+);
+
+CREATE TABLE Bestellinfos(
+    InfosID INT AUTO_INCREMENT PRIMARY KEY,
+    ProduktID INT ,
+    BestellID INT,
+    Menge FLOAT,
+    FOREIGN KEY(ProduktID) REFERENCES Produkte(ProduktID),
+    FOREIGN KEY(BestellID) REFERENCES Bestellungen(BestellID)
+); 

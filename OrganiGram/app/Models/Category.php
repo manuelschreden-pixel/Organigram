@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Product;
+
+class Category extends Model
+{
+    use HasFactory;
+
+    protected $table = 'categories';
+    protected $primaryKey = 'category_id';
+    public $incrementing = true;
+    protected $keyType = 'int';
+
+    protected $fillable = [
+        'category_name'
+    ];
+
+    public function product()
+    {
+        return $this -> hasMany(Product::class, 'product_id', 'product_id');
+    }
+}
