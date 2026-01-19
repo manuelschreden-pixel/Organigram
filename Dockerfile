@@ -1,23 +1,6 @@
-FROM php:8.2-fpm
-
-# System Dependencies – JEDER Backslash mit LEERZEICHEN davor!
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip \
-    libzip-dev \
-    libicu-dev \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    libwebp-dev \
-    nginx \
-    supervisor
-
-# PHP Extensions – SIMPEL & funktioniert immer
-RUN docker-php-ext-configure gd \
- && docker-php-ext-configure intl \
- &&
+FROM php:8.3-fpm
+RUN apt-get update && apt-get install -y git curl libpng-dev libonig-dev libxml2-dev libzip-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev nginx supervisor && docker-php-ext-configure gd intl zip && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip intl && apt-get clean && rm -rf /var/lib/apt/lists/*
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+WORKDIR /var/www/html
+COPY . /var/www/html
+RUN composer install --optimize-autoloader --no-dev --no-scripts && php artisan key
