@@ -22,18 +22,13 @@ class OrdersOverview extends TableWidget
     protected int | string | array $columnSpan = 'full';
     protected static ?int $pollingInterval = 10;
 
-    /*protected function getTableQuery(): Builder
-    {
-        return Order::query()
-            //->latest()
-            ->limit(10);
-    }*/
-
 
     public function table(Table $table): Table
     {
         return $table
-            //->query(fn (): Builder => Orders::query())
+            ->query(
+                Order::query()->limit(10)
+            )
             ->columns([
                 TextColumn::make('order_id')
                 ->label('Bestellung #')
