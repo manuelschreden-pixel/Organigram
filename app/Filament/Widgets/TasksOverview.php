@@ -14,6 +14,10 @@ use Filament\Forms\Components\Checkbox;
 
 class TasksOverview extends TableWidget
 {
+    protected static ?string $heading = 'Aktuelle Aufgaben';
+    protected int | string | array $columnSpan = 'full';
+    protected static ?string $pollingInterval = '30s'; //Zeitintervall bis zur nächsten Aktualisierung
+
     public function table(Table $table): Table
     {
         return $table

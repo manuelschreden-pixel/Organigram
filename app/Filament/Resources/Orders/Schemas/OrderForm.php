@@ -78,7 +78,7 @@ class OrderForm
                             ->label('Notiz')
                             ->default(null),
 
-                    ])->columnSpan(2)->columns(2),
+                    ])->columnSpan('full')->columns(2),
 
             Section::make('Produktauswahl')
                 ->schema([
@@ -86,7 +86,7 @@ class OrderForm
                         ->label('Kategorie')
                         ->options(fn () => \App\Models\Category::pluck('category_name', 'category_id'))
                         ->live()
-                        ->columnSpan(3),
+                        ->columnSpan('full'),
 
                         Section::make('Auswahl')
                         ->schema(function ($get){
@@ -162,7 +162,7 @@ class OrderForm
                         
                         ->columnSpan(2),
                 ])
-                ->columnSpan(3)->columns(3),
+                ->columnSpan('full')->columns(3),
             ]);            
     }
 }

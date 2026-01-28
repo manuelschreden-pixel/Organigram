@@ -20,7 +20,8 @@ class OrdersOverview extends TableWidget
 {
     protected static ?string $heading = 'Aktuelle Bestellungen';
     protected int | string | array $columnSpan = 'full';
-    protected static ?int $pollingInterval = 10;
+    protected static ?string $pollingInterval = '30s'; //Zeitintervall bis zur nächsten Aktualisierung
+
 
 
     public function table(Table $table): Table

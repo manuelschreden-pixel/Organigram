@@ -22,6 +22,18 @@ class TasksResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'task';
 
+    // 🔹 Einzel-Titel (z. B. beim Bearbeiten)
+    public static function getModelLabel(): string
+    {
+        return 'Aufgabe';
+    }
+
+    // 🔹 Plural-Titel (z. B. Tabellenüberschrift)
+    public static function getPluralModelLabel(): string
+    {
+        return 'Aufgaben';
+    }
+
     public static function form(Schema $schema): Schema
     {
         return TasksForm::configure($schema);
