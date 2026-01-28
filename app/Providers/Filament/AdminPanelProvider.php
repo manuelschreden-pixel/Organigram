@@ -38,9 +38,11 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
+                //Sind die zwei Anzeigen am Dashboard (Filamentdokulink und Sign out)
+                //AccountWidget::class,
+                //FilamentInfoWidget::class,
             ])
+            //Das ist der HTTP-Stack für alle /admin-Routen
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -52,6 +54,7 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
+            //Nur eingeloggt User können dadurch /admin aufrufen
             ->authMiddleware([
                 Authenticate::class,
             ])

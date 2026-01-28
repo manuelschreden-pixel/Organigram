@@ -20,6 +20,9 @@ class OrderInfoResource extends Resource
 {
     protected static ?string $model = OrderInfo::class;
 
+    //deaktiviert die Sichtbarkeit in der Sidebar
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $recordTitleAttribute = 'orderinfo_id';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
     protected static ?string $navigationLabel = 'Bestellinfos';

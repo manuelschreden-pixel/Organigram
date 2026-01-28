@@ -20,7 +20,7 @@ class ProductsTable
                     ->searchable(),
                 TextColumn::make('price')
                     ->label('Preis')
-                    ->money()
+                    ->money("EUR")
                     ->sortable(),
                 TextColumn::make('stock_quantity')
                     ->label('Lagerbestand')

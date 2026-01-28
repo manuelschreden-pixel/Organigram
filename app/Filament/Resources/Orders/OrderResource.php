@@ -24,7 +24,7 @@ class OrderResource extends Resource
     protected static ?string $recordTitleAttribute = 'customer_id';
 
     protected static ?string $navigationLabel = 'Bestellungen';
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUser;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedShoppingCart;
     protected static ?int $navigationSort = 2;
     
 

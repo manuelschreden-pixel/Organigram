@@ -23,7 +23,7 @@ class CustomerResource extends Resource
     protected static ?string $recordTitleAttribute = 'surname';
 
     protected static ?string $navigationLabel = 'Kundenverwaltung';
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUser;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUsers;
     protected static ?int $navigationSort = 1;
     
 

@@ -19,7 +19,7 @@ class OrderStatus extends Model
         'status_name'
     ];
 
-    public function adress()
+    public function orders()
     {
         return $this -> hasMany(Order::class, 'orderstatus_id', 'orderstatus_id');
     }

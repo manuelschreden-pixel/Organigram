@@ -25,7 +25,7 @@ class AdressResource extends Resource
     protected static ?string $recordTitleAttribute = 'street';
 
     protected static ?string $navigationLabel = 'Adressverwaltung';                     //Labelname on the left side
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUser;   //Icon next to the name
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedHome;   //Icon next to the name
     protected static ?int $navigationSort = 5;                                          //sorting order
 
     // single label
