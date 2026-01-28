@@ -9,6 +9,10 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\DatePicker;
+use Filament\Schemas\Components\Section;
 
 class OrdersTable
 {
@@ -36,7 +40,7 @@ class OrdersTable
                     ->label('Abholdatum')
                     ->date()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
                 TextColumn::make('PickupLocation')
                     ->label('Abholort')
                     ->searchable()
