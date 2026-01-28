@@ -60,8 +60,8 @@ class AdminPanelProvider extends PanelProvider
             ])
             
             ->brandName('Organigram')
-            ->brandLogo(asset('images/Logo.png'))
-            ->brandLogoHeight('2rem')
+            ->brandLogo(asset('images/Gramitscher.png'))
+            ->brandLogoHeight('5rem')
             //->brandColor('primary')
             ;
     }
