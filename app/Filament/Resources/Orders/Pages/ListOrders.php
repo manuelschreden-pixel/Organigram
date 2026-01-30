@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Orders\Pages;
 use App\Filament\Resources\Orders\OrderResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Schemas\Components\Tabs\Tab;
 
 class ListOrders extends ListRecords
 {
@@ -12,8 +13,19 @@ class ListOrders extends ListRecords
 
     protected function getHeaderActions(): array
     {
+        return [CreateAction::make()];
+    }
+
+    public function getTabs(): array
+    {
         return [
-            CreateAction::make(),
+            'table' => Tab::make('Bestellungen'),
+            'overview' => Tab::make('Anzahl Übersicht')
         ];
+    }
+
+    public function getDefaultActiveTab(): ?string
+    {
+        return 'table';
     }
 }

@@ -25,8 +25,8 @@ class OrderResource extends Resource
 
     protected static ?string $navigationLabel = 'Bestellungen';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedShoppingCart;
-    protected static ?int $navigationSort = 2;
     
+    protected static ?int $navigationSort = 2;    
 
     // 🔹 Einzel-Titel (z. B. beim Bearbeiten)
     public static function getModelLabel(): string
