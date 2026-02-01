@@ -18,6 +18,8 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\View\PanelsRenderHook;
+use Illuminate\Support\Facades\Blade;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -63,6 +65,29 @@ class AdminPanelProvider extends PanelProvider
             ->brandLogo(asset('images/Gramitscher.png'))
             ->brandLogoHeight('5rem')
             //->brandColor('primary')
-            ;
+
+            ->renderHook(
+                PanelsRenderHook::HEAD_START,
+                fn (): string => Blade::render('<link rel="manifest" href="' . asset('manifest.json') . '">
+                    <meta name="theme-color" content="#0f766e">
+                    <link rel="apple-touch-icon" href="' . asset('icons/icon-192.png') . '">
+                    <meta name="apple-mobile-web-app-capable" content="yes">
+                    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+                    <meta name="apple-mobile-web-app-title" content="OrganiGram">')
+                )
+            
+            ->renderHook(
+                PanelsRenderHook::BODY_END,
+                fn (): string => Blade::render('<script>
+                    if ("serviceWorker" in navigator) {
+                        window.addEventListener("load", () => {
+                            navigator.serviceWorker.register("' . asset('service-worker.js') . '")
+                                .then(reg => console.log("SW registered", reg.scope))
+                                .catch(err => console.error("SW failed", err));
+                        });
+                    }
+                </script>')
+            );
+            
     }
 }

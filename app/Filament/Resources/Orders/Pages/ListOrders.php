@@ -15,7 +15,7 @@ class ListOrders extends ListRecords
     {
         return [CreateAction::make()];
     }
-
+    /*
     public function getTabs(): array
     {
         return [
@@ -27,5 +27,5 @@ class ListOrders extends ListRecords
     public function getDefaultActiveTab(): ?string
     {
         return 'table';
-    }
+    }*/
 }

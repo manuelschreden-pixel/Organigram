@@ -26,13 +26,13 @@ class TasksOverview extends TableWidget
                 TextColumn::make('task')
                     ->label('Aufgabe')
                     ->searchable(),
+                CheckboxColumn::make('state')
+                    ->label('Status'),
                 TextColumn::make('description')
                     ->label('Beschreibung'),
                 TextColumn::make('completion')
                     ->label('Fertigstellung bis')
                     ->dateTime('d.m.Y H:i'),
-                CheckboxColumn::make('state')
-                    ->label('Status'),
             ])
             ->filters([
                 Filter::make('state2')

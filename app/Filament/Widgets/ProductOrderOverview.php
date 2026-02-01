@@ -16,6 +16,8 @@ class ProductOrderOverview extends TableWidget
     protected static ?string $heading = 'Summe der bestellten Produkte';
     protected int | string | array $columnSpan = 'full';
 
+    protected static bool $isDiscovered = false;
+
     public function table(Table $table): Table
     {
         return $table
@@ -23,6 +25,9 @@ class ProductOrderOverview extends TableWidget
             ->query(
                 Product::query()
                     ->join('orderinfo','orderinfo.product_id', '=', 'products.product_id')
+                    ->join('order', 'order.order_id', '=', 'orderinfo.order_id')
+                    ->join('orderstatus', 'orderstatus.orderstatus_id', '=', 'order.orderstatus_id')
+                    ->where('orderstatus.status_name', 'Bestellt')
                     ->selectRaw('products.product_id, products.product_name, SUM(orderinfo.quantity) as total_quantity')
                     ->groupBy('products.product_id', 'products.product_name')
             )
@@ -45,11 +50,11 @@ class ProductOrderOverview extends TableWidget
                         $query
                             ->when(
                                 $data['start_date'],
-                                fn ($q) => $q->whereDate('created_at', '>=', $data['start_date'])
+                                fn ($q) => $q->whereDate('delivery_date', '>=', $data['start_date'])
                             )
                             ->when(
                                 $data['end_date'],
-                                fn ($q) => $q->whereDate('created_at', '<=', $data['end_date'])
+                                fn ($q) => $q->whereDate('delivery_date', '<=', $data['end_date'])
                             );
                     }),
             ])
